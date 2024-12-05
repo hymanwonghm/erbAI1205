@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "976d7675-a717-4bae-a8df-0afd6be1e34c",
+		"name": "Label_detection",
+		"description": "This is the API collection for Label detection. We have 3 API requests. check out the details of each api by viewing the full document.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35023641"
+	},
+	"item": [
+		{
+			"name": "http://localhost:3000/create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "imageFile",
+							"type": "file",
+							"src": "postman-cloud:///1efa26cb-59df-4390-a19d-f1e93999ae1b"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:3000/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create"
+					]
+				},
+				"description": "Expected Behaviour: Create a new image item in DB with the following Schema:  \n`id PRIMARY KEY,`\n\n`name TEXT NOT NULL,`\n\n`detected_label TEXT NOT NULL`\n\n**name**: name of the image file being upload\n\n**detected_label**: the detected label obtained from Google Vision API with feature type set as`LABEL_DETECTION`\n\nInput: upload a image file (.jpg/.png) in request Body, set the value type as `File` with the associated key named `imageFile`\n\nresponse:\n\n- on success (200): return a json object: `{ message: \"Image created successfully\" }`\n    \n- on error (500): return error message"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"list"
+					]
+				},
+				"description": "Expected Behaviour: List all the image item\n\nresponse:\n\n- on success (200): return all the image item in JSON format\n    \n- on error (500): return error message"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:3000/get/1",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/get/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get",
+						"1"
+					]
+				},
+				"description": "Expected Behaviour: Get the image item associated with the given id\n\n**params**: id\n\nresponse:\n\n- on success (200): return all the image item in JSON format\n    \n- on error (500): return error message"
+			},
+			"response": []
+		}
+	]
+}
